@@ -3,11 +3,10 @@
 # - For AWS CloudFormation: CFT
 # - For Kubernetes: K8S
 				
-template_type: TF
+template_type: K8S
 
 # The valid values for terraform_version are 0.11 or 0.12
-				
-terraform_version: 0.11
+
 
 # If terraform_version is 0.11, then terraform_011_parameters 
 # is required.
