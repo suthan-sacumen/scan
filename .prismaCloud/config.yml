@@ -18,8 +18,6 @@ terraform_version: 0.11
 # that identify the input variables your template uses.
 				
 terraform_011_parameters:
-	variable_files:
-		- src/main/resources/main.tf
 	 variable_values:
 		- name: check 
 		  value: public-read-write
