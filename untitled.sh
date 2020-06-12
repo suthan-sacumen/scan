@@ -153,8 +153,8 @@ fi
 ##################################################
 #echo "Get token using login api"
 
-result=$(curl -k -i -o -X POST $prisma_cloud_api_url/login --user-agent "GitLab PrismaCloud/DevOpsSecurity-1.0.0" -H 'Content-Type:application/json' -d "{\"username\":\"${access_key}\",\"password\":\"${secret_key}\"}")
-#echo $result
+result=$(curl -k -i -o -X POST $prisma_cloud_api_url/login --user-agent "GitLab PrismaCloud/DevOpsSecurity-1.0.0" -H 'Content-Type:application/json' -d "{\"username\":\"$prisma_cloud_access_key\",\"password\":\"$prisma_cloud_secret_key\"}")
+echo $result
 code=$(echo "$result" |grep HTTP | awk '{print $2}')
 echo $code
 
@@ -206,12 +206,14 @@ cd  $CI_BUILDS_DIR
 #ls
 cp $repo_path/iacscan.zip .
 response="$(curl -k  -X POST $url -H "x-redlock-auth:${token}" --user-agent "GitlabCI PrismaCloud/DevOpsSecurity-1.0.0" $headers -H "x-redlock-iac-metadata:${metadata_json}" -F templateFile=@iacscan.zip)"
-#echo $response
+echo $response
 
 result="$(echo "$response" | jq -r '.result.is_successful')"
+echo $result
 mkdir results
 if [[ "$result" == true ]];then
   matched="$(echo "$response" | jq -r '.result.rules_matched')"
+  echo $matched
   if [[ $matched != null ]];then
     stats="$(echo "$response" | jq -r '.result.severity_stats')"
     echo $matched | jq '["Severity","Name","Description", "Files"], (map({severity, name, description, files} ) | .[] | [.severity, .name, .description, (.files|join(";"))]) | @csv' | tr -d '\\"'> results/scan.csv
