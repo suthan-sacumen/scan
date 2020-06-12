@@ -3,11 +3,11 @@
 # - For AWS CloudFormation: CFT
 # - For Kubernetes: K8S
 				
-template_type:TF
+.template_type: TF
 
 # The valid values for terraform_version are 0.11 or 0.12
 				
-terraform-version: 0.11
+.terraform_version: 0.11
 
 # If terraform_version is 0.11, then terraform_011_parameters 
 # is required.
@@ -17,7 +17,3 @@ terraform-version: 0.11
 # The value for variable_values is an array of name/value pairs 
 # that identify the input variables your template uses.
 				
-terraform-011-parameters:
-	 variable-values:
-		- name: check 
-		  value: public-read-write
