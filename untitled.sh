@@ -94,9 +94,9 @@ fi
 ################################################
 
 fileContents=$(yq read -j $repo_path/.prismaCloud/config.yml)
-#echo "file contents are:" $fileContents
+echo "file contents are:" $fileContents
 t_Type="$(echo "$fileContents" | jq -r '.template_type')"
-#echo "template type:" $t_Type
+echo "template type:" $t_Type
 headers=""
 url=""
 
