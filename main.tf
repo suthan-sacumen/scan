@@ -1,7 +1,7 @@
 # Configure the AWS Provider
 provider "aws" {
   region = "us-east-2"
-}
+
 
 # Create an EC2 instance
 resource "aws_instance" "example" {
