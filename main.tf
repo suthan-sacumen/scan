@@ -53,7 +53,7 @@ resource "aws_security_group" "elb" {
 # the instances over SSH and HTTP
 resource "aws_security_group" "default" {
   name        = "terraform_example"
-  description = "Used in the terraform"
+  description = "Used in the terraform this edit"
   vpc_id      = "${aws_vpc.default.id}"
 
   # SSH access from anywhere
